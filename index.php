@@ -44,9 +44,12 @@ class TPLinkAuth
                 //                 self::setCSRFToken($resObj->value);
                 // }
     curl_close($ch);
-echo "3";
-    if($http_code != '200')
-    throw new Exception('Error : Failed to receive access token');
+
+    echo "3";
+
+    if($http_code != '200') {
+        throw new Exception('Error : Failed to receive access token');
+    }
 
     return $resObj->value;
     }
@@ -63,8 +66,8 @@ try {
     $tplink_C = new TPLinkAuth();
 echo "try 2";
 //    $access_token = $tplink_C->login();
-$tplink_C->login();
-echo "try 3";
+$user_info = $tplink_C->login();
+echo json_encode($user_info);
 } catch (Exception $e) {
     echo $e->getMessage();
     exit;

@@ -20,13 +20,13 @@ curl_setopt($ch, CURLOPT_POST, TRUE);
 // Set return to a value, not return to page
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 // Set up cookies
-curl_setopt($ch, CURLOPT_COOKIEJAR, "cookies.txt");
-curl_setopt($ch, CURLOPT_COOKIEFILE, "cookies.txt");
+// curl_setopt($ch, CURLOPT_COOKIEJAR, "cookies.txt");
+// curl_setopt($ch, CURLOPT_COOKIEFILE, "cookies.txt");
 // Allow Self Signed Certs
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
 // API Call
-curl_setopt($ch, CURLOPT_URL, https://192.168.8.175:8043 . "/api/v2/hotspot/login");
+curl_setopt($ch, CURLOPT_URL, "https://192.168.8.175:8043" . "/api/v2/hotspot/login");
 curl_setopt($ch, CURLOPT_POSTFIELDS, "name=" . $_SESSION["name"] ."&password=" . $_SESSION["password"]);
     $res = curl_exec($ch);
     $resObj = json_decode($res);

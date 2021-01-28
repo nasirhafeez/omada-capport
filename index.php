@@ -13,6 +13,8 @@ $_SESSION["time"] = 300;
 $_SESSION["name"] = 'operator1';
 $_SESSION["password"] = 'operator1';
 
+echo $_SESSION["clientMac"];
+
 private static function login() {       
 $ch = curl_init();
 // post

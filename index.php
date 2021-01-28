@@ -44,7 +44,7 @@ curl_close($ch);
 // }
 
 echo "starting function execution";
-echo $resObj;
+echo $res;
 //login();
 
 ?>

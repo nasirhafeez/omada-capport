@@ -33,8 +33,8 @@ class TPLinkAuth
         $res = curl_exec($ch);
         $resObj = json_decode($res);
 
-        curl_getinfo ($ch);
-
+        $info = curl_getinfo ($ch);
+        echo $info;
         return $resObj->value;
     //Prevent CSRF
                 // if($resObj->success == true){

@@ -35,19 +35,19 @@ class TPLinkAuth
         $resObj = json_decode($res);
 
     //Prevent CSRF
-                // if($resObj->success == true){
-                //     echo "setting csrf token";
-                //                 self::setCSRFToken($resObj->value);
-                // }
+                if($resObj->success == true){
+                    echo "setting csrf token";
+                                self::setCSRFToken($resObj->value);
+                }
     curl_close($ch);
     }
 
-    // private static function setCSRFToken($token) {
-    //                 $myfile = fopen("../token.txt", "w") or die("Unable to open file!");
-    //                 fwrite($myfile, $token);
-    //                 fclose($myfile);
-    //                 return $token;
-    // }
+    private static function setCSRFToken($token) {
+                    $myfile = fopen("../token.txt", "w") or die("Unable to open file!");
+                    fwrite($myfile, $token);
+                    fclose($myfile);
+                    return $token;
+    }
 }
 
 try { 

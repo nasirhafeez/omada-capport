@@ -14,29 +14,29 @@ $_SESSION["name"] = 'operator1';
 $_SESSION["password"] = 'operator1';
 
 private static function login() {       
-$ch = curl_init();
-// post
-curl_setopt($ch, CURLOPT_POST, TRUE);
-// Set return to a value, not return to page
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-// Set up cookies
-// curl_setopt($ch, CURLOPT_COOKIEJAR, "cookies.txt");
-// curl_setopt($ch, CURLOPT_COOKIEFILE, "cookies.txt");
-// Allow Self Signed Certs
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
-// API Call
-curl_setopt($ch, CURLOPT_URL, "https://192.168.8.175:8043" . "/api/v2/hotspot/login");
-curl_setopt($ch, CURLOPT_POSTFIELDS, "name=" . $_SESSION["name"] ."&password=" . $_SESSION["password"]);
-    $res = curl_exec($ch);
-    $resObj = json_decode($res);
-    echo $resObj;
-//Prevent CSRF
-              if($resObj->success == true){
-                  echo "setting csrf token";
-                              self::setCSRFToken($resObj->value);
-              }
-curl_close($ch);
+// $ch = curl_init();
+// // post
+// curl_setopt($ch, CURLOPT_POST, TRUE);
+// // Set return to a value, not return to page
+// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+// // Set up cookies
+// // curl_setopt($ch, CURLOPT_COOKIEJAR, "cookies.txt");
+// // curl_setopt($ch, CURLOPT_COOKIEFILE, "cookies.txt");
+// // Allow Self Signed Certs
+// curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+// curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+// // API Call
+// curl_setopt($ch, CURLOPT_URL, "https://192.168.8.175:8043" . "/api/v2/hotspot/login");
+// curl_setopt($ch, CURLOPT_POSTFIELDS, "name=" . $_SESSION["name"] ."&password=" . $_SESSION["password"]);
+//     $res = curl_exec($ch);
+//     $resObj = json_decode($res);
+//     echo $resObj;
+// //Prevent CSRF
+//               if($resObj->success == true){
+//                   echo "setting csrf token";
+//                               self::setCSRFToken($resObj->value);
+//               }
+// curl_close($ch);
 }
 
 // private static function setCSRFToken($token){

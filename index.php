@@ -54,6 +54,7 @@ try {
     $tplink_C = new TPLinkAuth();
 
     $access_token = $tplink_C->login();
+    echo "login done";
     print_r($access_token);
 
 } catch (Exception $e) {

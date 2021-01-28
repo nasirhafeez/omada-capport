@@ -49,18 +49,12 @@ class TPLinkAuth
     // }
 }
 
-echo "starting function execution";
-
-try {
-
-    echo "inside try 1";    
+try { 
 
     $tplink_C = new TPLinkAuth();
 
-    echo "inside try 2";
-
     $access_token = $tplink_C->login();
-    echo $access_token;
+    print_r($access_token);
 
 } catch (Exception $e) {
     echo $e->getMessage();

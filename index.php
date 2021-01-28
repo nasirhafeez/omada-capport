@@ -46,6 +46,8 @@ private static function setCSRFToken($token){
                 return $token;
 }
 
-login();
+echo "starting function execution";
+
+//login();
 
 ?>

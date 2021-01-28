@@ -33,15 +33,19 @@ class TPLinkAuth
         $res = curl_exec($ch);
         $resObj = json_decode($res);
 
-        $info = curl_getinfo ($ch);
-        echo $info;
-        return $resObj->value;
+        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        
     //Prevent CSRF
                 // if($resObj->success == true){
                 //     echo "setting csrf token";
                 //                 self::setCSRFToken($resObj->value);
                 // }
     curl_close($ch);
+
+    if($http_code != '200')
+    throw new Exception('Error : Failed to receive access token');
+    
+    return $resObj->value;
     }
 
     // private static function setCSRFToken($token) {

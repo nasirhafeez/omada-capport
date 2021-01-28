@@ -19,14 +19,6 @@ class TPLinkAuth
     $ch = curl_init();
     // post
     curl_setopt($ch, CURLOPT_POST, TRUE);
-
-    $data = array(
-        'username' => 'operator1',
-        'password' => 'operator1'
-    );
-
-    $payload = json_encode($data);
-
     // Set return to a value, not return to page
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     // Set up cookies
@@ -38,11 +30,7 @@ class TPLinkAuth
     // API Call
     curl_setopt($ch, CURLOPT_SSL_CIPHER_LIST, 'DEFAULT@SECLEVEL=1');
     curl_setopt($ch, CURLOPT_URL, "https://192.168.8.175:8043/api/v2/hotspot/login");
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        'Content-Type: application/json',
-        'Content-Length: ' . strlen($payload))
-    );
+    curl_setopt($ch, CURLOPT_POSTFIELDS, "name=" . $_SESSION["name"] ."&password=" . $_SESSION["password"]);
         $res = curl_exec($ch);
         $resObj = json_decode($res);
 

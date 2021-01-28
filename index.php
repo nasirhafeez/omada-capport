@@ -15,7 +15,7 @@ $_SESSION["password"] = 'operator1';
 
 class TPLinkAuth
 {
-    private static function login() {       
+    function login() {       
     $ch = curl_init();
     // post
     curl_setopt($ch, CURLOPT_POST, TRUE);
@@ -53,9 +53,9 @@ class TPLinkAuth
 try { 
     $tplink_C = new TPLinkAuth();
 echo "try 2";
-//    $access_token = $tplink_C->login();
-$user_info = $tplink_C->login();
-echo json_encode($user_info);
+    $user_info = $tplink_C->login();
+    echo json_encode($user_info);
+
 } catch (Exception $e) {
     echo $e->getMessage();
     exit;

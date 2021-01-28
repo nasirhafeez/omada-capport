@@ -26,6 +26,8 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
 // API Call
 curl_setopt($ch, CURLOPT_VERBOSE, true);
+$verbose = fopen('error.txt', 'w+');
+curl_setopt($handle, CURLOPT_STDERR, $verbose);
 curl_setopt($ch, CURLOPT_URL, "https://192.168.8.175:8043/api/v2/hotspot/login");
 curl_setopt($ch, CURLOPT_POSTFIELDS, "name=" . $_SESSION["name"] ."&password=" . $_SESSION["password"]);
     $res = curl_exec($ch);

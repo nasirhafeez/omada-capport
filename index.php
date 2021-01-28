@@ -62,6 +62,4 @@ try {
     exit;
 }
 
-//login();
-
 ?>

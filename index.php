@@ -52,7 +52,12 @@ class TPLinkAuth
 echo "starting function execution";
 
 try {
+
+    echo "inside try 1";    
+
     $tplink_C = new TPLinkAuth();
+
+    echo "inside try 2";
 
     $access_token = $tplink_C->login();
     echo $access_token;

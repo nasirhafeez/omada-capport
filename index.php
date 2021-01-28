@@ -33,7 +33,7 @@ class TPLinkAuth
         $res = curl_exec($ch);
         $resObj = json_decode($res);
 
-        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    //    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         
     //Prevent CSRF
                 // if($resObj->success == true){
@@ -44,7 +44,7 @@ class TPLinkAuth
 
     if($http_code != '200')
     throw new Exception('Error : Failed to receive access token');
-    
+
     return $resObj->value;
     }
 
@@ -61,8 +61,6 @@ try {
     $tplink_C = new TPLinkAuth();
 
     $access_token = $tplink_C->login();
-    echo "login done";
-    print_r($access_token);
 
 } catch (Exception $e) {
     echo $e->getMessage();

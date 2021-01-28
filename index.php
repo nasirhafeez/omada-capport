@@ -22,8 +22,8 @@ class TPLinkAuth
     // Set return to a value, not return to page
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     // Set up cookies
-    // curl_setopt($ch, CURLOPT_COOKIEJAR, "cookies.txt");
-    // curl_setopt($ch, CURLOPT_COOKIEFILE, "cookies.txt");
+    curl_setopt($ch, CURLOPT_COOKIEJAR, "cookies.txt");
+    curl_setopt($ch, CURLOPT_COOKIEFILE, "cookies.txt");
     // Allow Self Signed Certs
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
@@ -31,27 +31,15 @@ class TPLinkAuth
     curl_setopt($ch, CURLOPT_SSL_CIPHER_LIST, 'DEFAULT@SECLEVEL=1');
     curl_setopt($ch, CURLOPT_URL, "https://192.168.8.175:8043" . "/api/v2/hotspot/login");
     curl_setopt($ch, CURLOPT_POSTFIELDS, "name=" . $_SESSION["name"] ."&password=" . $_SESSION["password"]);
-    echo "1";
         $res = curl_exec($ch);
-        echo "2";
         $resObj = json_decode($res);
 
-    //    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        
     //Prevent CSRF
                 // if($resObj->success == true){
                 //     echo "setting csrf token";
                 //                 self::setCSRFToken($resObj->value);
                 // }
     curl_close($ch);
-
-    echo "3";
-
-    if($http_code != '200') {
-        throw new Exception('Error : Failed to receive access token');
-    }
-
-    return $resObj->value;
     }
 
     // private static function setCSRFToken($token) {

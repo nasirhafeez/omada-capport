@@ -29,7 +29,6 @@ curl_setopt($ch, CURLOPT_URL, "https://192.168.8.175:8043" . "/api/v2/hotspot/lo
 curl_setopt($ch, CURLOPT_POSTFIELDS, "name=" . $_SESSION["name"] ."&password=" . $_SESSION["password"]);
     $res = curl_exec($ch);
     $resObj = json_decode($res);
-    echo $resObj;
 // //Prevent CSRF
 //               if($resObj->success == true){
 //                   echo "setting csrf token";
@@ -45,7 +44,7 @@ curl_close($ch);
 // }
 
 echo "starting function execution";
-
+echo $resObj;
 //login();
 
 ?>

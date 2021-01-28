@@ -1,21 +1,19 @@
 <?php
 
-print_r($_GET);
+session_start();
 
-// session_start();
+$_SESSION["clientMac"] = $_GET["clientMac"];
+$_SESSION["apMac"] = $_GET["apMac"];
+$_SESSION["ssidName"] = $_GET["ssidName"];
+$_SESSION["t"] = $_GET["t"];
+$_SESSION["radioId"] = $_GET["radioId"];
+$_SESSION["site"] = $_GET["site"];
 
-// $_SESSION["clientMac"] = $_GET["clientMac"];
-// $_SESSION["apMac"] = $_GET["apMac"];
-// $_SESSION["ssidName"] = $_GET["ssidName"];
-// $_SESSION["t"] = $_GET["t"];
-// $_SESSION["radioId"] = $_GET["radioId"];
-// $_SESSION["site"] = $_GET["site"];
+$_SESSION["time"] = 300;
+$_SESSION["name"] = 'operator1';
+$_SESSION["password"] = 'operator1';
 
-// $_SESSION["time"] = 300;
-// $_SESSION["name"] = 'operator1';
-// $_SESSION["password"] = 'operator1';
-
-// echo $_SESSION["clientMac"];
+echo $_SESSION["clientMac"];
 
 // private static function login() {       
 // $ch = curl_init();

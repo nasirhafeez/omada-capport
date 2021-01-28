@@ -59,10 +59,10 @@ echo "3";
 }
 
 try { 
-echo "try 1";
     $tplink_C = new TPLinkAuth();
 echo "try 2";
-    $access_token = $tplink_C->login();
+//    $access_token = $tplink_C->login();
+$tplink_C->login();
 echo "try 3";
 } catch (Exception $e) {
     echo $e->getMessage();

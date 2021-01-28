@@ -13,41 +13,43 @@ $_SESSION["time"] = 300;
 $_SESSION["name"] = 'operator1';
 $_SESSION["password"] = 'operator1';
 
-$ch = curl_init();
-// post
-curl_setopt($ch, CURLOPT_POST, TRUE);
-// Set return to a value, not return to page
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-// Set up cookies
-// curl_setopt($ch, CURLOPT_COOKIEJAR, "cookies.txt");
-// curl_setopt($ch, CURLOPT_COOKIEFILE, "cookies.txt");
-// Allow Self Signed Certs
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
-// API Call
-curl_setopt($ch, CURLOPT_VERBOSE, true);
-$verbose = fopen('error.txt', 'w+');
-curl_setopt($handle, CURLOPT_STDERR, $verbose);
-curl_setopt($ch, CURLOPT_URL, "https://192.168.8.175:8043/api/v2/hotspot/login");
-curl_setopt($ch, CURLOPT_POSTFIELDS, "name=" . $_SESSION["name"] ."&password=" . $_SESSION["password"]);
-    $res = curl_exec($ch);
-    $resObj = json_decode($res);
-// //Prevent CSRF
-//               if($resObj->success == true){
-//                   echo "setting csrf token";
-//                               self::setCSRFToken($resObj->value);
-//               }
-curl_close($ch);
+class TPLinkAuth
+{
+    private static function login() {       
+    $ch = curl_init();
+    // post
+    curl_setopt($ch, CURLOPT_POST, TRUE);
+    // Set return to a value, not return to page
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    // Set up cookies
+    // curl_setopt($ch, CURLOPT_COOKIEJAR, "cookies.txt");
+    // curl_setopt($ch, CURLOPT_COOKIEFILE, "cookies.txt");
+    // Allow Self Signed Certs
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+    // API Call
+    curl_setopt($ch, CURLOPT_URL, "https://192.168.8.175:8043" . "/api/v2/hotspot/login");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, "name=" . $_SESSION["name"] ."&password=" . $_SESSION["password"]);
+        $res = curl_exec($ch);
+        $resObj = json_decode($res);
+    //Prevent CSRF
+                if($resObj->success == true){
+                    echo "setting csrf token";
+                                self::setCSRFToken($resObj->value);
+                }
+    curl_close($ch);
+    }
 
-// private static function setCSRFToken($token){
-//                 $myfile = fopen("../token.txt", "w") or die("Unable to open file!");
-//                 fwrite($myfile, $token);
-//                 fclose($myfile);
-//                 return $token;
-// }
+    // private static function setCSRFToken($token) {
+    //                 $myfile = fopen("../token.txt", "w") or die("Unable to open file!");
+    //                 fwrite($myfile, $token);
+    //                 fclose($myfile);
+    //                 return $token;
+    // }
+}
 
 echo "starting function execution";
-echo $res;
+
 //login();
 
 ?>

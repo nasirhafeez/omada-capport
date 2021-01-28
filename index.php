@@ -30,7 +30,9 @@ class TPLinkAuth
     // API Call
     curl_setopt($ch, CURLOPT_URL, "https://192.168.8.175:8043" . "/api/v2/hotspot/login");
     curl_setopt($ch, CURLOPT_POSTFIELDS, "name=" . $_SESSION["name"] ."&password=" . $_SESSION["password"]);
+    echo "1";
         $res = curl_exec($ch);
+        echo "2";
         $resObj = json_decode($res);
 
     //    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -41,7 +43,7 @@ class TPLinkAuth
                 //                 self::setCSRFToken($resObj->value);
                 // }
     curl_close($ch);
-
+echo "3";
     if($http_code != '200')
     throw new Exception('Error : Failed to receive access token');
 

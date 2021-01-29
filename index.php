@@ -4,30 +4,30 @@ session_start();
 
 echo "test";
 
-// $curl = curl_init();
+$curl = curl_init();
 
-// curl_setopt_array($curl, array(
-//   CURLOPT_URL => 'https://192.168.8.175:8043/api/v2/hotspot/login',
-//   CURLOPT_RETURNTRANSFER => true,
-//   CURLOPT_ENCODING => '',
-//   CURLOPT_MAXREDIRS => 10,
-//   CURLOPT_TIMEOUT => 0,
-//   CURLOPT_FOLLOWLOCATION => true,
-//   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-//   CURLOPT_CUSTOMREQUEST => 'POST',
-//   CURLOPT_POSTFIELDS =>'{
-// 	"name": "operator1",
-// 	"password": "operator1"
-// }',
-//   CURLOPT_HTTPHEADER => array(
-//     'Content-Type: application/json'
-//   ),
-// ));
+curl_setopt_array($curl, array(
+  CURLOPT_URL => 'https://192.168.8.175:8043/api/v2/hotspot/login',
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => '',
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 0,
+  CURLOPT_FOLLOWLOCATION => true,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => 'POST',
+  CURLOPT_POSTFIELDS =>'{
+	"name": "operator1",
+	"password": "operator1"
+}',
+  CURLOPT_HTTPHEADER => array(
+    'Content-Type: application/json'
+  ),
+));
 
-// $response = curl_exec($curl);
+$response = curl_exec($curl);
 
-// curl_close($curl);
-// echo $response;
+curl_close($curl);
+echo $response;
 
 // $_SESSION["clientMac"] = $_GET["clientMac"];
 // $_SESSION["apMac"] = $_GET["apMac"];

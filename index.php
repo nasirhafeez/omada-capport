@@ -27,8 +27,8 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => 'POST',
   CURLOPT_POSTFIELDS =>'{
-	"name": "$_SESSION["name"]",
-	"password": "$_SESSION["password"]"
+	"name": $_SESSION["name"],
+  "password": $_SESSION["password"]
 }',
   CURLOPT_HTTPHEADER => array(
     'Content-Type: application/json'

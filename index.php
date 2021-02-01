@@ -28,7 +28,7 @@ curl_setopt_array($curl, array(
   CURLOPT_CUSTOMREQUEST => 'POST',
   CURLOPT_POSTFIELDS =>'{
 	"name": "operator1",
-  "password": "operator"
+  "password": "operator1"
 }',
   CURLOPT_HTTPHEADER => array(
     'Content-Type: application/json'

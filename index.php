@@ -44,7 +44,7 @@ if ($response !== false) {
   echo $json[result][token];
 }
 else {
-  die("Error: check with your network administrator")
+  die("Error: check with your network administrator");
 }
 // class TPLinkAuth
 // {

@@ -38,7 +38,7 @@ curl_setopt_array($curl, array(
 $response = curl_exec($curl);
 
 curl_close($curl);
-echo $response->$result;
+echo $response;
 
 // class TPLinkAuth
 // {

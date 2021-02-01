@@ -39,7 +39,7 @@ $response = curl_exec($curl);
 
 curl_close($curl);
 
-$abc = json_encode($response);
+$abc = json_decode($response);
 
 echo $abc;
 

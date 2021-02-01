@@ -42,8 +42,9 @@ curl_close($curl);
 
 if ($response !== false) {
   $json = json_decode($response, true);
-  $csrfToken = $json[result][token];
+//  $csrfToken = $json[result][token];
 //  echo $csrfToken;
+echo $json;
 }
 else {
   die("Error: check with your network administrator");

@@ -39,9 +39,7 @@ $response = curl_exec($curl);
 
 curl_close($curl);
 
-$abc = json_decode($response);
-
-echo $abc;
+echo $response;
 
 // class TPLinkAuth
 // {

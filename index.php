@@ -28,7 +28,7 @@ curl_setopt_array($curl, array(
   CURLOPT_CUSTOMREQUEST => 'POST',
   CURLOPT_POSTFIELDS =>'{
 	"name": "operator1",
-  "password": "operator1"
+  "password": "operator"
 }',
   CURLOPT_HTTPHEADER => array(
     'Content-Type: application/json'
@@ -39,13 +39,13 @@ $response = curl_exec($curl);
 
 curl_close($curl);
 
-//echo $response;
-
-$json = json_decode($response, true);
-//print_r($json[result][token]);
-
-echo $json[result][token];
-
+if ($response !== false) {
+  $json = json_decode($response, true);
+  echo $json[result][token];
+}
+else {
+  die("Error: check with your network administrator")
+}
 // class TPLinkAuth
 // {
 //     function login() {       

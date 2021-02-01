@@ -29,6 +29,8 @@ $response = curl_exec($curl);
 curl_close($curl);
 echo $response;
 
+echo "completed";
+
 // $_SESSION["clientMac"] = $_GET["clientMac"];
 // $_SESSION["apMac"] = $_GET["apMac"];
 // $_SESSION["ssidName"] = $_GET["ssidName"];

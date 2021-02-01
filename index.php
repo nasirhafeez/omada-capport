@@ -63,25 +63,26 @@ $authInfo = array(
 'time' => $seconds
 );
 
-// curl_setopt_array($curl, array(
-//   CURLOPT_URL => 'https://192.168.8.175:8043/api/v2/hotspot/login',
-//   CURLOPT_RETURNTRANSFER => true,
-//   CURLOPT_ENCODING => '',
-//   CURLOPT_MAXREDIRS => 10,
-//   CURLOPT_TIMEOUT => 0,
-//   CURLOPT_SSL_VERIFYPEER => false,
-//   CURLOPT_SSL_VERIFYHOST => false,
-//   CURLOPT_FOLLOWLOCATION => true,
-//   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-//   CURLOPT_CUSTOMREQUEST => 'POST',
-//   CURLOPT_POSTFIELDS =>'{
-// 	"name": "operator1",
-//   "password": "operator1"
-// }',
-//   CURLOPT_HTTPHEADER => array(
-//     'Content-Type: application/json'
-//   ),
-// ));
+$url = 'https://192.168.8.175:8043/api/v2/hotspot/extportal'.$site."/auth"."?token=".$csrfToken;
+
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => $url,
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => '',
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 0,
+  CURLOPT_SSL_VERIFYPEER => false,
+  CURLOPT_SSL_VERIFYHOST => false,
+  CURLOPT_FOLLOWLOCATION => true,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => 'POST',
+  CURLOPT_POSTFIELDS => json_encode($authInfo),
+  CURLOPT_HTTPHEADER => array(
+    'Content-Type: application/json'
+  ),
+));
 
 // $ch = curl_init();
 // // post
@@ -100,16 +101,16 @@ $authInfo = array(
 // $data = json_encode($authInfo);
 // curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($authInfo)); 
 
-// $res = curl_exec($ch);
+$res = curl_exec($curl);
 // $resObj = self::resultConvert($res);
 
 // if($resObj['success'] == false){
 //  echo $res;
 //  }
 
-// curl_close($ch);
+curl_close($curl);
 
-
+echo $res;
 
 
 

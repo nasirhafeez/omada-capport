@@ -15,6 +15,10 @@ $password = 'operator1';
 
 $curl = curl_init();
 
+$postData = [ "name" => $username,
+    "password" => $password
+];
+
 curl_setopt_array($curl, array(
   CURLOPT_URL => 'https://192.168.8.175:8043/api/v2/hotspot/login',
   CURLOPT_RETURNTRANSFER => true,
@@ -26,10 +30,7 @@ curl_setopt_array($curl, array(
   CURLOPT_FOLLOWLOCATION => true,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => 'POST',
-  CURLOPT_POSTFIELDS =>'{
-	"name": $username,
-  "password": $password
-}',
+  CURLOPT_POSTFIELDS => json_encode($postData),
   CURLOPT_HTTPHEADER => array(
     'Content-Type: application/json'
   ),

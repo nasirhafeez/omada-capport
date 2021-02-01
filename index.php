@@ -2,7 +2,16 @@
 
 session_start();
 
-echo "test";
+$_SESSION["clientMac"] = $_GET["clientMac"];
+$_SESSION["apMac"] = $_GET["apMac"];
+$_SESSION["ssidName"] = $_GET["ssidName"];
+$_SESSION["t"] = $_GET["t"];
+$_SESSION["radioId"] = $_GET["radioId"];
+$_SESSION["site"] = $_GET["site"];
+
+$_SESSION["time"] = 300;
+$_SESSION["name"] = 'operator1';
+$_SESSION["password"] = 'operator1';
 
 $curl = curl_init();
 
@@ -18,8 +27,8 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => 'POST',
   CURLOPT_POSTFIELDS =>'{
-	"name": "operator1",
-	"password": "operator1"
+	"name": "$_SESSION["name"]",
+	"password": "$_SESSION["password"]"
 }',
   CURLOPT_HTTPHEADER => array(
     'Content-Type: application/json'
@@ -29,9 +38,9 @@ curl_setopt_array($curl, array(
 $response = curl_exec($curl);
 
 curl_close($curl);
-echo $response;
+//echo $response;
 
-echo "completed";
+print_r($response);
 
 // $_SESSION["clientMac"] = $_GET["clientMac"];
 // $_SESSION["apMac"] = $_GET["apMac"];

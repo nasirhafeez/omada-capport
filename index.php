@@ -57,8 +57,9 @@ $authInfo = array(
 'clientMac' => $clientMac,
 'apMac' => $apMac,
 'ssidName' => $ssidName,
-'radioId' => $radioId,
 't' => $t,
+'radioId' => $radioId,
+'site' => $site,
 'time' => $seconds
 );
 

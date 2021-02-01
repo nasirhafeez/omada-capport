@@ -59,7 +59,7 @@ class TPLinkAuth
     curl_setopt($ch, CURLOPT_POSTFIELDS, "name=" . "operator1" ."&password=" . "operator1");
         $res = curl_exec($ch);
         $resObj = json_decode($res);
-        echo $resObj;
+        echo $res;
     //Prevent CSRF
                 // if($resObj->success == true){
                 //     echo "setting csrf token";

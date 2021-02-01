@@ -64,51 +64,53 @@ $authInfo = array(
 
 $url = 'https://192.168.8.175:8043/api/v2/hotspot/extportal/auth?token='.$csrfToken;
 
-$curlAuth = curl_init();
+echo $url;
 
-curl_setopt_array($curlAuth, array(
-  CURLOPT_URL => $url,
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => '',
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 0,
-  CURLOPT_SSL_VERIFYPEER => false,
-  CURLOPT_SSL_VERIFYHOST => false,
-  CURLOPT_FOLLOWLOCATION => true,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => 'POST',
-  CURLOPT_POSTFIELDS => json_encode($authInfo),
-  CURLOPT_HTTPHEADER => array(
-    'Content-Type: application/json'
-  ),
-));
+// $curlAuth = curl_init();
 
-// $ch = curl_init();
-// // post
-// curl_setopt($ch, CURLOPT_POST, TRUE);
-// // Set return to a value, not return to page
-// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-// // Set up cookies
-// curl_setopt($ch, CURLOPT_COOKIEJAR, COOKIE_FILE_PATH);
-// curl_setopt($ch, CURLOPT_COOKIEFILE, COOKIE_FILE_PATH);
-// // Allow Self Signed Certs    
-// curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-// curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
-// // API Call
-// $csrfToken = self::getCSRFToken();
-// curl_setopt($ch, CURLOPT_URL, CONTROLLER_SERVER ."/extportal/". $site."/auth"."?token=".$csrfToken);
-// $data = json_encode($authInfo);
-// curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($authInfo)); 
+// curl_setopt_array($curlAuth, array(
+//   CURLOPT_URL => $url,
+//   CURLOPT_RETURNTRANSFER => true,
+//   CURLOPT_ENCODING => '',
+//   CURLOPT_MAXREDIRS => 10,
+//   CURLOPT_TIMEOUT => 0,
+//   CURLOPT_SSL_VERIFYPEER => false,
+//   CURLOPT_SSL_VERIFYHOST => false,
+//   CURLOPT_FOLLOWLOCATION => true,
+//   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+//   CURLOPT_CUSTOMREQUEST => 'POST',
+//   CURLOPT_POSTFIELDS => json_encode($authInfo),
+//   CURLOPT_HTTPHEADER => array(
+//     'Content-Type: application/json'
+//   ),
+// ));
 
-$res = curl_exec($curlAuth);
-// $resObj = self::resultConvert($res);
+// // $ch = curl_init();
+// // // post
+// // curl_setopt($ch, CURLOPT_POST, TRUE);
+// // // Set return to a value, not return to page
+// // curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+// // // Set up cookies
+// // curl_setopt($ch, CURLOPT_COOKIEJAR, COOKIE_FILE_PATH);
+// // curl_setopt($ch, CURLOPT_COOKIEFILE, COOKIE_FILE_PATH);
+// // // Allow Self Signed Certs    
+// // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+// // curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+// // // API Call
+// // $csrfToken = self::getCSRFToken();
+// // curl_setopt($ch, CURLOPT_URL, CONTROLLER_SERVER ."/extportal/". $site."/auth"."?token=".$csrfToken);
+// // $data = json_encode($authInfo);
+// // curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($authInfo)); 
 
-// if($resObj['success'] == false){
-//  echo $res;
-//  }
+// $res = curl_exec($curlAuth);
+// // $resObj = self::resultConvert($res);
 
-curl_close($curlAuth);
+// // if($resObj['success'] == false){
+// //  echo $res;
+// //  }
 
-echo $res;
+// curl_close($curlAuth);
+
+// echo $res;
 
 ?>

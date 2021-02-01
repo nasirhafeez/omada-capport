@@ -37,8 +37,6 @@ curl_setopt_array($curl, array(
 
 $response = curl_exec($curl);
 
-$resObj = json_decode($response);
-
 curl_close($curl);
 echo $resObj;
 

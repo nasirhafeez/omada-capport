@@ -62,7 +62,7 @@ $authInfo = array(
 'time' => $seconds
 );
 
-$url = 'https://192.168.8.175:8043/api/v2/hotspot/extportal/'.$site."/auth"."?token=".$csrfToken;
+$url = 'https://192.168.8.175:8043/api/v2/hotspot/extportal/auth?token='.$csrfToken;
 
 $curlAuth = curl_init();
 

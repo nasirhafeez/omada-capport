@@ -37,8 +37,10 @@ curl_setopt_array($curl, array(
 
 $response = curl_exec($curl);
 
+$resObj = json_decode($response);
+
 curl_close($curl);
-echo gettype($response);
+echo $resObj;
 
 // $_SESSION["clientMac"] = $_GET["clientMac"];
 // $_SESSION["apMac"] = $_GET["apMac"];

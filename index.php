@@ -40,7 +40,7 @@ $response = curl_exec($curl);
 curl_close($curl);
 //echo $response;
 
-print_r($response);
+print_r($response[result]);
 
 // $_SESSION["clientMac"] = $_GET["clientMac"];
 // $_SESSION["apMac"] = $_GET["apMac"];

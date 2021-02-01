@@ -38,7 +38,7 @@ curl_setopt_array($curl, array(
 $response = curl_exec($curl);
 
 curl_close($curl);
-echo $response;
+echo $response->$result;
 
 // $_SESSION["clientMac"] = $_GET["clientMac"];
 // $_SESSION["apMac"] = $_GET["apMac"];

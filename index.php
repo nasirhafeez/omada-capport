@@ -2,6 +2,14 @@
 
 session_start();
 
+$controllerIP = '192.168.8.175';
+$controllerPort = '8043';
+$seconds = 300000;
+$username = 'operator1';
+$password = 'operator1';
+
+#########################################################################
+
 $clientMac = $_GET["clientMac"];
 $apMac = $_GET["apMac"];
 $ssidName = $_GET["ssidName"];
@@ -10,10 +18,6 @@ $radioId = $_GET["radioId"];
 $site = $_GET["site"];
 $cookiePath = "cookies/".$clientMac;
 
-$seconds = 300000;
-$username = 'operator1';
-$password = 'operator1';
-
 $curl = curl_init();
 
 $postData = [ "name" => $username,
@@ -21,7 +25,7 @@ $postData = [ "name" => $username,
 ];
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://192.168.8.175:8043/api/v2/hotspot/login',
+  CURLOPT_URL => 'https://'.$controllerIP.':'.$controllerPort.'/api/v2/hotspot/login',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_COOKIEJAR => $cookiePath,
   CURLOPT_COOKIEFILE => $cookiePath,
@@ -61,18 +65,7 @@ $postData2 = [ "clientMac" => $clientMac,
   'time' => $seconds
 ];
 
-// // $authInfo = array(
-// // 'clientMac' => $clientMac,
-// // 'apMac' => $apMac,
-// // 'ssidName' => $ssidName,
-// // 't' => $t,
-// // 'radioId' => $radioId,
-// // 'site' => $site,
-// // 'authType' => 4,
-// // 'time' => $seconds
-// // );
-
-$url = 'https://192.168.8.175:8043/api/v2/hotspot/extPortal/auth?token='.$csrfToken;
+$url = 'https://'.$controllerIP.':'.$controllerPort.'/api/v2/hotspot/extPortal/auth?token='.$csrfToken;
 
 $curlAuth = curl_init();
 

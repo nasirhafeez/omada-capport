@@ -43,42 +43,15 @@ $response = curl_exec($curl);
 
 curl_close($curl);
 
-echo $cookiePath;
-// if ($response !== false) {
-//   $json = json_decode($response, true);
-//   $csrfToken = $json['result']['token'];
-// }
-// else {
-//   die("Error: check with your network administrator");
-// }
+if ($response !== false) {
+  $json = json_decode($response, true);
+  $csrfToken = $json['result']['token'];
+}
+else {
+  die("Error: check with your network administrator");
+}
 
-
-// Matching the response to extract cookie value 
-// preg_match_all('/^Set-Cookie:\s*([^;]*)/mi', 
-//           $response,  $match_found); 
-   
-// $cookies = array(); 
-// foreach($match_found[1] as $item) { 
-//     parse_str($item,  $cookie); 
-//     $cookies = array_merge($cookies,  $cookie); 
-// } 
-
-// preg_match_all('/{ * }}/', 
-//           $response,  $match_found); 
-
-// $token = array(); 
-// foreach($match_found[1] as $item) { 
-//     parse_str($item,  $tok); 
-//     $token = array_merge($token,  $tok); 
-// } 
-
-// Printing cookie data 
-// print_r( $cookies); 
-// echo $match_found;
-// echo $csrfToken;
-// echo "<br>";
-// print_r($response);
-  // Send user to authorize and the time allowed
+echo $csrfToken;
 
 // $postData = [ "clientMac" => $clientMac,
 //   "apMac" => $apMac,

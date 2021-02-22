@@ -20,8 +20,9 @@ $cookiePath = "cookies/".$clientMac;
 
 $curl = curl_init();
 
-$postData = [ "name" => $username,
-    "password" => $password
+$postData = [
+  "name" => $username,
+  "password" => $password
 ];
 
 curl_setopt_array($curl, array(
@@ -55,7 +56,8 @@ else {
   die("Error: check with your network administrator");
 }
 
-$postData2 = [ "clientMac" => $clientMac,
+$postData2 = [
+  "clientMac" => $clientMac,
   "apMac" => $apMac,
   'ssidName' => $ssidName,
   't' => $t,
@@ -91,7 +93,5 @@ curl_setopt_array($curlAuth, array(
 $res = curl_exec($curlAuth);
 
 curl_close($curlAuth);
-
-echo $res;
 
 ?>

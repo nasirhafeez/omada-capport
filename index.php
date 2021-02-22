@@ -4,7 +4,7 @@ session_start();
 
 $controllerIP = '192.168.8.175';
 $controllerPort = '8043';
-$seconds = 300000;
+$seconds = 60000;
 $username = 'operator1';
 $password = 'operator1';
 

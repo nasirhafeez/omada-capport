@@ -43,6 +43,7 @@ $response = curl_exec($curl);
 
 curl_close($curl);
 
+echo $cookiePath;
 // if ($response !== false) {
 //   $json = json_decode($response, true);
 //   $csrfToken = $json['result']['token'];
@@ -76,7 +77,7 @@ curl_close($curl);
 // echo $match_found;
 // echo $csrfToken;
 // echo "<br>";
-print_r($response);
+// print_r($response);
   // Send user to authorize and the time allowed
 
 // $postData = [ "clientMac" => $clientMac,

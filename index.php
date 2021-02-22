@@ -9,7 +9,7 @@ $t = $_GET["t"];
 $radioId = $_GET["radioId"];
 $site = $_GET["site"];
 
-$seconds = 300;
+$seconds = 300000;
 $username = 'operator1';
 $password = 'operator1';
 
@@ -22,6 +22,7 @@ $postData = [ "name" => $username,
 curl_setopt_array($curl, array(
   CURLOPT_URL => 'https://192.168.8.175:8043/api/v2/hotspot/login',
   CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_HEADER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
   CURLOPT_TIMEOUT => 0,
@@ -49,67 +50,74 @@ else {
 }
 
 
-
-
+// Matching the response to extract cookie value 
+preg_match_all('/^Set-Cookie:\s*([^;]*)/mi', 
+          $response,  $match_found); 
+   
+$cookies = array(); 
+foreach($match_found[1] as $item) { 
+    parse_str($item,  $cookie); 
+    $cookies = array_merge($cookies,  $cookie); 
+} 
+   
+// Printing cookie data 
+print_r( $cookies); 
+echo "<br>";
+echo $csrfToken;
 
   // Send user to authorize and the time allowed
-$authInfo = array(
-'clientMac' => $clientMac,
-'apMac' => $apMac,
-'ssidName' => $ssidName,
-'t' => $t,
-'radioId' => $radioId,
-'site' => $site,
-'time' => $seconds
-);
 
-$url = 'https://192.168.8.175:8043/api/v2/hotspot/extportal/'. $site.'/auth?token='.$csrfToken;
+// $postData = [ "clientMac" => $clientMac,
+//   "apMac" => $apMac,
+//   'ssidName' => $ssidName,
+//   't' => $t,
+//   'radioId' => $radioId,
+//   'site' => $site,
+//   'authType' => 4,
+//   'time' => $seconds
+// ];
 
-$curlAuth = curl_init();
+// // $authInfo = array(
+// // 'clientMac' => $clientMac,
+// // 'apMac' => $apMac,
+// // 'ssidName' => $ssidName,
+// // 't' => $t,
+// // 'radioId' => $radioId,
+// // 'site' => $site,
+// // 'authType' => 4,
+// // 'time' => $seconds
+// // );
 
-curl_setopt_array($curlAuth, array(
-  CURLOPT_URL => $url,
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => '',
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 0,
-  CURLOPT_SSL_VERIFYPEER => false,
-  CURLOPT_SSL_VERIFYHOST => false,
-  CURLOPT_FOLLOWLOCATION => true,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => 'POST',
-  CURLOPT_POSTFIELDS => json_encode($authInfo),
-  CURLOPT_HTTPHEADER => array(
-    'Content-Type: application/json'
-  ),
-));
+// $url = 'https://192.168.8.175:8043/api/v2/hotspot/extPortal/auth?token='.$csrfToken;
 
-// $ch = curl_init();
-// // post
-// curl_setopt($ch, CURLOPT_POST, TRUE);
-// // Set return to a value, not return to page
-// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-// // Set up cookies
-// curl_setopt($ch, CURLOPT_COOKIEJAR, COOKIE_FILE_PATH);
-// curl_setopt($ch, CURLOPT_COOKIEFILE, COOKIE_FILE_PATH);
-// // Allow Self Signed Certs    
-// curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-// curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
-// // API Call
-// $csrfToken = self::getCSRFToken();
-// curl_setopt($ch, CURLOPT_URL, CONTROLLER_SERVER ."/extportal/". $site."/auth"."?token=".$csrfToken);
-// $data = json_encode($authInfo);
-// curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($authInfo)); 
+// $curlAuth = curl_init();
 
-$res = curl_exec($curlAuth);
-// $resObj = self::resultConvert($res);
+// curl_setopt_array($curlAuth, array(
+//   CURLOPT_URL => $url,
+//   CURLOPT_RETURNTRANSFER => true,
+//   CURLOPT_ENCODING => '',
+//   CURLOPT_MAXREDIRS => 10,
+//   CURLOPT_TIMEOUT => 0,
+//   CURLOPT_SSL_VERIFYPEER => false,
+//   CURLOPT_SSL_VERIFYHOST => false,
+//   CURLOPT_FOLLOWLOCATION => true,
+//   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+//   CURLOPT_CUSTOMREQUEST => 'POST',
+//   CURLOPT_POSTFIELDS => json_encode($authInfo),
+//   CURLOPT_HTTPHEADER => array(
+//     'Content-Type: application/json'
+//   ),
+// ));
 
-// if($resObj['success'] == false){
-//  echo $res;
-//  }
+// $res = curl_exec($curlAuth);
+// // $resObj = self::resultConvert($res);
 
-curl_close($curlAuth);
+// // if($resObj['success'] == false){
+// //  echo $res;
+// //  }
 
-echo $res;
+// curl_close($curlAuth);
+
+// echo $res;
 
 ?>

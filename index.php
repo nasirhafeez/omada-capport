@@ -19,10 +19,15 @@ $postData = [ "name" => $username,
     "password" => $password
 ];
 
+curl_setopt($ch, CURLOPT_COOKIEJAR, COOKIE_FILE_PATH);
+
+curl_setopt($ch, CURLOPT_COOKIEFILE, COOKIE_FILE_PATH);
+
 curl_setopt_array($curl, array(
   CURLOPT_URL => 'https://192.168.8.175:8043/api/v2/hotspot/login',
   CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_HEADER => true,
+  CURLOPT_COOKIEJAR => "/tmp/cookies.txt",
+  CURLOPT_COOKIEFILE => "/tmp/cookies.txt",
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
   CURLOPT_TIMEOUT => 0,
@@ -51,17 +56,17 @@ curl_close($curl);
 
 
 // Matching the response to extract cookie value 
-preg_match_all('/^Set-Cookie:\s*([^;]*)/mi', 
-          $response,  $match_found); 
+// preg_match_all('/^Set-Cookie:\s*([^;]*)/mi', 
+//           $response,  $match_found); 
    
-$cookies = array(); 
-foreach($match_found[1] as $item) { 
-    parse_str($item,  $cookie); 
-    $cookies = array_merge($cookies,  $cookie); 
-} 
+// $cookies = array(); 
+// foreach($match_found[1] as $item) { 
+//     parse_str($item,  $cookie); 
+//     $cookies = array_merge($cookies,  $cookie); 
+// } 
 
-preg_match_all('/{ * }}/', 
-          $response,  $match_found); 
+// preg_match_all('/{ * }}/', 
+//           $response,  $match_found); 
 
 // $token = array(); 
 // foreach($match_found[1] as $item) { 

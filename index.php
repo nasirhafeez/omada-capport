@@ -8,7 +8,7 @@ $ssidName = $_GET["ssidName"];
 $t = $_GET["t"];
 $radioId = $_GET["radioId"];
 $site = $_GET["site"];
-$cookiePath = $clientMac."/cookies/cookies.txt";
+$cookiePath = "cookies/".$clientMac;
 
 $seconds = 300000;
 $username = 'operator1';

@@ -73,8 +73,8 @@ preg_match_all('/{ * }}/',
 // print_r( $cookies); 
 echo $match_found;
 // echo $csrfToken;
-
-//print_r($response);
+echo "<br>";
+print_r($response);
   // Send user to authorize and the time allowed
 
 // $postData = [ "clientMac" => $clientMac,

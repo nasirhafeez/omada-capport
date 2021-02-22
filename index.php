@@ -62,10 +62,11 @@ foreach($match_found[1] as $item) {
    
 // Printing cookie data 
 // print_r( $cookies); 
-echo $json;
-echo "<br>";
-echo $csrfToken;
+// echo $json;
+// echo "<br>";
+// echo $csrfToken;
 
+print_r($response);
   // Send user to authorize and the time allowed
 
 // $postData = [ "clientMac" => $clientMac,

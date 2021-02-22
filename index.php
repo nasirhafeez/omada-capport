@@ -61,7 +61,8 @@ foreach($match_found[1] as $item) {
 } 
    
 // Printing cookie data 
-print_r( $cookies); 
+// print_r( $cookies); 
+echo $json;
 echo "<br>";
 echo $csrfToken;
 

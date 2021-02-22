@@ -60,22 +60,21 @@ foreach($match_found[1] as $item) {
     $cookies = array_merge($cookies,  $cookie); 
 } 
 
-preg_match_all('/^"token"\s*([^;]*)/mi', 
+preg_match_all('/{.*}}/', 
           $response,  $match_found); 
 
-$token = array(); 
-foreach($match_found[1] as $item) { 
-    parse_str($item,  $tok); 
-    $token = array_merge($token,  $tok); 
-} 
+// $token = array(); 
+// foreach($match_found[1] as $item) { 
+//     parse_str($item,  $tok); 
+//     $token = array_merge($token,  $tok); 
+// } 
 
 // Printing cookie data 
 // print_r( $cookies); 
-echo $token;
-echo "<br>";
+echo $match_found;
 // echo $csrfToken;
 
-print_r($response);
+//print_r($response);
   // Send user to authorize and the time allowed
 
 // $postData = [ "clientMac" => $clientMac,

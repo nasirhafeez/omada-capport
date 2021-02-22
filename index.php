@@ -51,7 +51,7 @@ else {
   die("Error: check with your network administrator");
 }
 
-$postData = [ "clientMac" => $clientMac,
+$postData2 = [ "clientMac" => $clientMac,
   "apMac" => $apMac,
   'ssidName' => $ssidName,
   't' => $t,
@@ -89,7 +89,7 @@ curl_setopt_array($curlAuth, array(
   CURLOPT_FOLLOWLOCATION => true,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => 'POST',
-  CURLOPT_POSTFIELDS => json_encode($authInfo),
+  CURLOPT_POSTFIELDS => json_encode($postData2),
   CURLOPT_HTTPHEADER => array(
     'Content-Type: application/json'
   ),

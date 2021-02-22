@@ -51,17 +51,15 @@ else {
   die("Error: check with your network administrator");
 }
 
-echo $csrfToken;
-
-// $postData = [ "clientMac" => $clientMac,
-//   "apMac" => $apMac,
-//   'ssidName' => $ssidName,
-//   't' => $t,
-//   'radioId' => $radioId,
-//   'site' => $site,
-//   'authType' => 4,
-//   'time' => $seconds
-// ];
+$postData = [ "clientMac" => $clientMac,
+  "apMac" => $apMac,
+  'ssidName' => $ssidName,
+  't' => $t,
+  'radioId' => $radioId,
+  'site' => $site,
+  'authType' => 4,
+  'time' => $seconds
+];
 
 // // $authInfo = array(
 // // 'clientMac' => $clientMac,
@@ -74,36 +72,33 @@ echo $csrfToken;
 // // 'time' => $seconds
 // // );
 
-// $url = 'https://192.168.8.175:8043/api/v2/hotspot/extPortal/auth?token='.$csrfToken;
+$url = 'https://192.168.8.175:8043/api/v2/hotspot/extPortal/auth?token='.$csrfToken;
 
-// $curlAuth = curl_init();
+$curlAuth = curl_init();
 
-// curl_setopt_array($curlAuth, array(
-//   CURLOPT_URL => $url,
-//   CURLOPT_RETURNTRANSFER => true,
-//   CURLOPT_ENCODING => '',
-//   CURLOPT_MAXREDIRS => 10,
-//   CURLOPT_TIMEOUT => 0,
-//   CURLOPT_SSL_VERIFYPEER => false,
-//   CURLOPT_SSL_VERIFYHOST => false,
-//   CURLOPT_FOLLOWLOCATION => true,
-//   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-//   CURLOPT_CUSTOMREQUEST => 'POST',
-//   CURLOPT_POSTFIELDS => json_encode($authInfo),
-//   CURLOPT_HTTPHEADER => array(
-//     'Content-Type: application/json'
-//   ),
-// ));
+curl_setopt_array($curlAuth, array(
+  CURLOPT_URL => $url,
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_COOKIEJAR => $cookiePath,
+  CURLOPT_COOKIEFILE => $cookiePath,
+  CURLOPT_ENCODING => '',
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 0,
+  CURLOPT_SSL_VERIFYPEER => false,
+  CURLOPT_SSL_VERIFYHOST => false,
+  CURLOPT_FOLLOWLOCATION => true,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => 'POST',
+  CURLOPT_POSTFIELDS => json_encode($authInfo),
+  CURLOPT_HTTPHEADER => array(
+    'Content-Type: application/json'
+  ),
+));
 
-// $res = curl_exec($curlAuth);
-// // $resObj = self::resultConvert($res);
+$res = curl_exec($curlAuth);
 
-// // if($resObj['success'] == false){
-// //  echo $res;
-// //  }
+curl_close($curlAuth);
 
-// curl_close($curlAuth);
-
-// echo $res;
+echo $res;
 
 ?>

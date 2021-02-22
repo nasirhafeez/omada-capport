@@ -72,9 +72,9 @@ curl_close($curl);
 
 // Printing cookie data 
 // print_r( $cookies); 
-echo $match_found;
+// echo $match_found;
 // echo $csrfToken;
-echo "<br>";
+// echo "<br>";
 print_r($response);
   // Send user to authorize and the time allowed
 

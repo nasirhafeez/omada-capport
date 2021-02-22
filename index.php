@@ -22,7 +22,6 @@ $postData = [ "name" => $username,
 curl_setopt_array($curl, array(
   CURLOPT_URL => 'https://192.168.8.175:8043/api/v2/hotspot/login',
   CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_HEADER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
   CURLOPT_TIMEOUT => 0,

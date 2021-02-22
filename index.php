@@ -60,7 +60,7 @@ foreach($match_found[1] as $item) {
     $cookies = array_merge($cookies,  $cookie); 
 } 
 
-preg_match_all('/{.*}}/', 
+preg_match_all('/{ * }}/', 
           $response,  $match_found); 
 
 // $token = array(); 

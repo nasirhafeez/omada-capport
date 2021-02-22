@@ -19,10 +19,6 @@ $postData = [ "name" => $username,
     "password" => $password
 ];
 
-curl_setopt($ch, CURLOPT_COOKIEJAR, COOKIE_FILE_PATH);
-
-curl_setopt($ch, CURLOPT_COOKIEFILE, COOKIE_FILE_PATH);
-
 curl_setopt_array($curl, array(
   CURLOPT_URL => 'https://192.168.8.175:8043/api/v2/hotspot/login',
   CURLOPT_RETURNTRANSFER => true,

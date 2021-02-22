@@ -8,6 +8,7 @@ $ssidName = $_GET["ssidName"];
 $t = $_GET["t"];
 $radioId = $_GET["radioId"];
 $site = $_GET["site"];
+$cookiePath = $clientMac."cookies/cookies.txt";
 
 $seconds = 300000;
 $username = 'operator1';
@@ -22,8 +23,8 @@ $postData = [ "name" => $username,
 curl_setopt_array($curl, array(
   CURLOPT_URL => 'https://192.168.8.175:8043/api/v2/hotspot/login',
   CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_COOKIEJAR => "cookies/cookies.txt",
-  CURLOPT_COOKIEFILE => "cookies/cookies.txt",
+  CURLOPT_COOKIEJAR => $cookiePath,
+  CURLOPT_COOKIEFILE => $cookiePath,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
   CURLOPT_TIMEOUT => 0,

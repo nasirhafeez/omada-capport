@@ -97,7 +97,11 @@ curl_close($curlAuth);
 if ($res !== false) {
   $json = json_decode($res, true);
   $code = $json['errorCode'];
-  echo $code;
+  if ($code === "0") {
+    echo "You are now authorized on the WiFi network";
+  } else {
+    die("Error: check with your network administrator");
+  }
 }
 else {
   die("Error: check with your network administrator");

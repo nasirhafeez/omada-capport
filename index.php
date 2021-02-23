@@ -4,7 +4,7 @@ session_start();
 
 $controllerIP = '192.168.8.175';
 $controllerPort = '8043';
-$seconds = 60000;
+$seconds = 20000;
 $username = 'operator1';
 $password = 'operator1';
 
@@ -94,7 +94,12 @@ $res = curl_exec($curlAuth);
 
 curl_close($curlAuth);
 
-print_r($res);
+//print_r($res);
+echo $res;
+
+echo "<br>";
+
+echo gettype($res);
 
 // if ($res !== false) {
 //   $json = json_decode($res, true);

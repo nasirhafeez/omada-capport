@@ -94,20 +94,13 @@ $res = curl_exec($curlAuth);
 
 curl_close($curlAuth);
 
-//print_r($res);
-echo $res;
-
-echo "<br>";
-
-echo gettype($res);
-
-// if ($res !== false) {
-//   $json = json_decode($res, true);
-// //  $csrfToken = $json['result']['token'];
-// echo $json;
-// }
-// else {
-//   die("Error: check with your network administrator");
-// }
+if ($res !== false) {
+  $json = json_decode($res, true);
+  $code = $json['errorCode'];
+  echo $code;
+}
+else {
+  die("Error: check with your network administrator");
+}
 
 ?>
